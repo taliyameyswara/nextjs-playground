@@ -4,8 +4,6 @@ import { Settings } from "@/types/Settings";
 import Link from "next/link";
 import { use } from "react";
 
-
-
 const Navbar = ({
   settingsPromise,
 }: {
@@ -22,8 +20,8 @@ const Navbar = ({
         <Link href="/posts" className="mr-2">
           Posts
         </Link>
-        <Link href="/todolist" className="mr-2">
-          Todolist
+        <Link href="/zustand" className="mr-2">
+          Zustand
         </Link>
       </nav>
     </>
