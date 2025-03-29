@@ -1,6 +1,5 @@
 import { Todo } from "@/types/Todo";
 import { create } from "zustand";
-
 import { persist } from "zustand/middleware";
 
 interface TodoState {

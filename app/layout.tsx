@@ -6,6 +6,7 @@ import getSettings from "@/queries/getSettings";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import Script from "next/script";
 import { ReactScan } from "@/components/react-scan";
+import { Toaster } from "@/components/ui/sonner";
 
 const fontSans = Source_Sans_3({
   variable: "--font-sans",
@@ -53,6 +54,7 @@ export default function RootLayout({
         >
           <Header />
           {children}
+          <Toaster position="top-center" richColors />
           <Footer />
         </ThemeProvider>
       </body>

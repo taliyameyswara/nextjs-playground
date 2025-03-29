@@ -9,17 +9,22 @@ export const metadata: Metadata = {
 const zustand = [
   {
     id: 1,
-    title: "Beginner Stuff",
+    title: "Simple Stuff",
     description: "This is a beginner Zustand example. For learning purposes.",
     link: "beginner",
-    type: "beginner",
   },
   {
     id: 2,
     title: "Todolist",
     description: "This is a simple Todo List app. Using persist.",
     link: "todolist",
-    type: "beginner",
+  },
+  {
+    id: 3,
+    title: "App to Cart",
+    description: "E-commerce Checkout Flow dengan Zustand",
+    link: "product",
+    type: "intermediate",
   },
 ];
 

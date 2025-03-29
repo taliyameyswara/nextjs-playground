@@ -5,5 +5,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <>This is Home, welcome to my Playground!</>;
+  return <p>This is Home, welcome to my Playground!</p>;
 }
