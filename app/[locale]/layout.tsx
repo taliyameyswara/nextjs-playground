@@ -7,6 +7,9 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import Script from "next/script";
 import { ReactScan } from "@/components/react-scan";
 import { Toaster } from "@/components/ui/sonner";
+import { notFound } from "next/navigation";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { routing } from "@/i18n/routing";
 
 const fontSans = Source_Sans_3({
   variable: "--font-sans",
@@ -29,13 +32,21 @@ export async function generateMetadata() {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+}) {
+  // Ensure that the incoming `locale` is valid
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <Script
           src="https://unpkg.com/react-scan/dist/auto.global.js"
@@ -52,10 +63,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
-          <Toaster position="top-center" richColors />
-          <Footer />
+          <NextIntlClientProvider>
+            <Header />
+            {children}
+            <Toaster position="top-center" richColors />
+            <Footer />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>
